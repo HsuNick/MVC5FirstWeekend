@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using MVC5FirstWeekend.Models;
+using System.Data.Entity.Validation;
 
 namespace MVC5FirstWeekend.Controllers
 {
@@ -110,8 +111,9 @@ namespace MVC5FirstWeekend.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             客戶資料 客戶資料 = db.客戶資料.Find(id);
-            db.客戶資料.Remove(客戶資料);
-            db.SaveChanges();
+            //db.客戶資料.Remove(客戶資料);
+            客戶資料.是否已刪除 = true;
+            db.SaveChanges();            
             return RedirectToAction("Index");
         }
 
